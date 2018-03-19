@@ -1,9 +1,17 @@
+using FirstCoreApp.Models;
+using Microsoft.AspNetCore.Mvc;
+
 namespace FirstCoreApp{
-    public class HomeController
+    public class HomeController : Controller
     {
-        public string Index()
+        public IActionResult Index()
         {
-            return "Hello from HomeController";
+            var model = new Restaurant { Id = 1, Name = "My Cozy Place" };
+            return new ObjectResult(model);
         }
+        //public string Index()
+        //{
+        //    return "Hello from HomeController";
+        //}
     }
 }

@@ -66,6 +66,10 @@ namespace FirstCoreApp
             //     Path="/wp"
             // });
 
+            // app.UseDefaultFiles(); //set the default to index.html, order matters, set default file fist,
+            // app.UseStaticFiles(); //use static files in wwwroot folder, order matters, use static file second
+            app.UseFileServer(); //this is equivalent to combine UseDefaultFiles() and UseStaticFiles()
+
             app.Run(async (context) =>
             {
                 // throw new Exception("error!");

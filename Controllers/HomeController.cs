@@ -7,11 +7,18 @@ namespace FirstCoreApp{
         public IActionResult Index()
         {
             var model = new Restaurant { Id = 1, Name = "My Cozy Place" };
-            return new ObjectResult(model);
+            return View(model);
         }
+
+        //public IActionResult Index()
+        //{
+        //    var model = new Restaurant { Id = 1, Name = "My Cozy Place" };
+        //    return new ObjectResult(model);
+        //}
         //public string Index()
         //{
         //    return "Hello from HomeController";
         //}
+        
     }
 }

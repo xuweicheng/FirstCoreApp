@@ -18,6 +18,7 @@ namespace FirstCoreApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IGreeter, Greeter>();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,7 +69,10 @@ namespace FirstCoreApp
 
             // app.UseDefaultFiles(); //set the default to index.html, order matters, set default file fist,
             // app.UseStaticFiles(); //use static files in wwwroot folder, order matters, use static file second
-            app.UseFileServer(); //this is equivalent to combine UseDefaultFiles() and UseStaticFiles()
+            // app.UseFileServer(); //this is equivalent to combine UseDefaultFiles() and UseStaticFiles()
+
+            app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
 
             app.Run(async (context) =>
             {

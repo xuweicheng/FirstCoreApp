@@ -1,7 +1,9 @@
-public class HomeController
-{
-    public string Index()
+namespace FirstCoreApp{
+    public class HomeController
     {
-        return "Hello from HomeController";
+        public string Index()
+        {
+            return "Hello from HomeController";
+        }
     }
 }

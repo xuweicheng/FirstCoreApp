@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -72,7 +73,8 @@ namespace FirstCoreApp
             // app.UseFileServer(); //this is equivalent to combine UseDefaultFiles() and UseStaticFiles()
 
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+            // app.UseMvcWithDefaultRoute();
+            app.UseMvc(configureRoutes);
 
             app.Run(async (context) =>
             {
@@ -81,8 +83,17 @@ namespace FirstCoreApp
                 var greetingMessage = greeter.getGreetingOfToday();
                 var greetingFromConfig = config["Greeting"];
                 // await context.Response.WriteAsync(greetingMessage);
-                await context.Response.WriteAsync($"{greetingMessage} : {env.EnvironmentName} : {greetingFromConfig}");
+                // await context.Response.WriteAsync($"{greetingMessage} : {env.EnvironmentName} : {greetingFromConfig}");
+                context.Response.ContentType = "text/plain";
+                await context.Response.WriteAsync($"Not found");
             });
+        }
+
+        private void configureRoutes(IRouteBuilder routeBuilder)
+        {
+            // routeBuilder.MapRoute("Default", "{controller}/{action}/{id?}"); // http://localhost/home/index, need to specify controller action
+            routeBuilder.MapRoute("Default", "{controller=home}/{action=index}/{id?}"); // http://localhost, will direct to home/index by default
+
         }
     }
 }

@@ -11,6 +11,8 @@
     </div>
     <div>
         @RenderSection("footer", required: false)
+        @*@await Component.InvokeAsync("Greeter")*@
+        <vc:greeter></vc:greeter>
     </div>
 </body>
 </html>

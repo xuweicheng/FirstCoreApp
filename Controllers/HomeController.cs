@@ -44,6 +44,29 @@ namespace FirstCoreApp
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(RestaurantEditModel model)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var newRestaurant = new Restaurant { Name = model.Name, Cuisine = model.Cuisine };
+
+            newRestaurant = _restaurantData.Add(newRestaurant);
+
+            //return RedirectToAction(nameof(Index));
+            //return View("Details", newRestaurant); the url stays in Create, refresh will resubmit
+            return RedirectToAction(nameof(Details), new { id = newRestaurant.Id });
+        }
         //public IActionResult Index()
         //{
         //    var model = new Restaurant { Id = 1, Name = "My Cozy Place" };

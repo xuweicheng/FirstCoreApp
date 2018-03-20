@@ -13,6 +13,7 @@
             <tr>
                 <td>@restaurant.Id</td>
                 <td>@restaurant.Name</td>
+                <td>@restaurant.Cuisine</td>
                 <td>
                     <a href="/home/details/@restaurant.Id">Details</a>
                     @*@Html.ActionLink("Go", "Details", new { id = restaurant.Id})*@ 
@@ -21,5 +22,6 @@
             </tr>
         }
     </table>
+    <a asp-action="Create">Create</a>
 </body>
 </html>

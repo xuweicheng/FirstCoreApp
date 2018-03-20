@@ -1,14 +1,14 @@
-﻿@model IEnumerable<FirstCoreApp.Models.Restaurant>
+﻿@model FirstCoreApp.ViewModels.HomeIndexViewModel
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
 </head>
 <body>
-    @*<h1>@Model.Name</h1>
-    <div>This Restaurant ID is @Model.Id</div>*@
+    <h1>@Model.GreetingMessage</h1>
+    
     <table>
-        @foreach(var restaurant in Model)
+        @foreach(var restaurant in Model.Restaurants)
         {
             <tr>
                 <td>@restaurant.Id</td>

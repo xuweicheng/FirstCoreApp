@@ -35,5 +35,10 @@ namespace FirstCoreApp.Services
         {
             return _restaurants.FirstOrDefault(r => r.Id == id);
         }
+
+        public Restaurant Update(Restaurant restaurant)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

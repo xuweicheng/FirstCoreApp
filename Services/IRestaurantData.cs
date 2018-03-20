@@ -8,5 +8,6 @@ namespace FirstCoreApp.Services
         IEnumerable<Restaurant> GetAll();
         Restaurant GetOne(int id);
         Restaurant Add(Restaurant newRestaurant);
+        Restaurant Update(Restaurant restaurant);
     }
 }

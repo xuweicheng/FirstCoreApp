@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FirstCoreApp.Data;
 using FirstCoreApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FirstCoreApp.Services
 {
@@ -31,6 +32,14 @@ namespace FirstCoreApp.Services
         public Restaurant GetOne(int id)
         {
             return _context.Restaurants.FirstOrDefault(r => r.Id == id);
+        }
+
+        public Restaurant Update(Restaurant restaurant)
+        {
+            _context.Attach(restaurant).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            return restaurant;
         }
     }
 }

@@ -1,16 +1,10 @@
 ﻿@model FirstCoreApp.Models.Restaurant
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-
+@{
+    ViewBag.Title = Model.Name;
+}
 <div>
-    <h4>Restaurant</h4>
+    <h4>@Model.Name</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -32,5 +26,3 @@
     @*<a href="/home/index">Back to List</a>*@
     <a asp-action="Index" asp-controller="Home">Back to List</a>
 </div>
-</body>
-</html>

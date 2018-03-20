@@ -23,5 +23,10 @@ namespace FirstCoreApp.Services
             return _restaurants.OrderBy(r => r.Name);
 
         }
+
+        public Restaurant GetOne(int id)
+        {
+            return _restaurants.FirstOrDefault(r => r.Id == id);
+        }
     }
 }

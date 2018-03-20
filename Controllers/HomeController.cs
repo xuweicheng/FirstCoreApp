@@ -3,7 +3,8 @@ using FirstCoreApp.Services;
 using FirstCoreApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FirstCoreApp{
+namespace FirstCoreApp
+{
     public class HomeController : Controller
     {
         private IRestaurantData _restaurantData;
@@ -23,7 +24,23 @@ namespace FirstCoreApp{
                 Restaurants = _restaurantData.GetAll(),
                 GreetingMessage = _greeter.getGreetingOfToday()
             };
-                
+
+            return View(model);
+        }
+
+        public IActionResult Details(int id)
+        {
+            var model = _restaurantData.GetOne(id);
+
+            if (model == null)
+            {
+                //other options
+                //return RedirectToAction()
+                //return NotFound(), where NotFound implements IActionResult
+                //return View("RestaurantNotFound");
+                return RedirectToAction(nameof(Index));
+            }
+
             return View(model);
         }
 

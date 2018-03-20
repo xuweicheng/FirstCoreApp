@@ -1,4 +1,4 @@
-﻿namespace FirstCoreApp
+﻿namespace FirstCoreApp.Services
 {
     public interface IGreeter
     {
